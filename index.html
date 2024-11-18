@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>C++ Technical Documentation Page</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav id="navbar">
+        <header>C++ Linked Lists</header>
+        <a href="#Introduction_to_Linked_Lists" class="nav-link">Introduction to Linked Lists</a>
+        <a href="#Linked_List_Implementation_in_C++" class="nav-link">Linked List Implementation in C++</a>
+        <a href="#Printing_elements_in_list" class="nav-link">Printing elements in list</a>
+        <a href="#Inserting_a_node_at_beginning" class="nav-link">Inserting a node at beginning</a>
+        <a href="#Inserting_a_node_at_nth_position" class="nav-link">Inserting a node at n<sup>th</sup> position</a>
+        <a href="#Try_these_on_your_own" class="nav-link">Try these on your own</a>
+        <a href="#Reference" class="nav-link">Reference</a>
+    </nav>
+    <main id="main-doc">
+        <section class="main-section" id="Introduction_to_Linked_Lists">
+            <header>Introduction to Linked Lists</header>
+            <p>A linked lists is a data structure where each element is a node with two parts, the actual data to be stored in the list and a pointer to the next node in the list</p>
+            <p>Unlike static arrays, linked lists are not stored in a contiguous block of memory. Pointers in the node help to know the memory address of every node in memory. They are also allocated dynamically in the heap section of the memory</p>
+            <p>The first element node in the list is called the <b>head</b> node. A stack variable points to the head node</p>
+            <p>Every node in the list points to the next node. The last node points to <code>nullptr</code>, signifying the end of the list</p>
+        </section>
+
+        <section class="main-section" id="Linked_List_Implementation_in_C++">
+            <header>Linked List Implementation in C++</header>
+            <pre>
+            struct Node {
+                int data; 
+                Node* next; 
+            } 
+            </pre>
+            <p>You can equally use classes for implementation. Data type can also be changed to suit your needs.</p>
+        </section>
+
+        <section class="main-section" id="Printing_elements_in_list">
+            <header>Printing elements in list</header>
+            <pre>
+            void Print() {
+                Node* temp = head; 
+                cout << "List is: "; 
+                while(temp != nullptr) {
+                    cout << " " << temp->data; 
+                    temp = temp->next; 
+                }
+            }
+            </pre>
+            <p>A stack variable called <code>temp</code> is used to store the adderss of the first node or the head node. While loop is used to traverse the entire list by changing <code>temp</code> to point the next node at each iteration. Before changing it, the <code>data</code> part is printed</p>
+        </section>
+
+        <section class="main-section" id="Inserting_a_node_at_beginning">
+            <header>Inserting a node at beginning</header>
+            <pre>
+            void Insert_Begin(int x) {
+                Node* temp = new Node; 
+                temp->data = x; 
+                temp->next = head; 
+                head = temp;  
+            }
+            </pre>
+            <p>A new node is created and it's memory address is stored in a stack variable, <code>temp</code>. The actual data to be stored is assigned to <code>temp->data</code>. <code>temp->next</code> is set to point to the current first node to place the new one before it</p>
+            <p>After, <code>head</code> is now set to point to the newly created node, making it the first node in the list</p>
+        </section>
+
+        <section class="main-section" id="Inserting_a_node_at_nth_position">
+            <header>Inserting a node at n<sup>th</sup> position</header>
+            <pre>
+            void Insert_n(int x, int n) {
+                Node* temp = new Node;
+                temp->data = x; 
+                temp->next = nullptr; 
+
+                Node* temp1 = head; 
+                for(int i=0; i <= n-2; i++) {
+                    temp1 = temp1->next; 
+                }
+                temp->next = temp1->next 
+                temp1->next = temp; 
+            }
+            </pre>
+            <p>New node is created. <code>temp1</code> is initialized with the address of the <code>head</code> node. The for loop traverses the list to the node before the node at n<sup>th</sup> position, i.e. (n-1)<sup>th</sup> node</p>
+            <p>It is n-2 in the for loop because counting starts from 0</p>
+        </section>
+
+        <section class="main-section" id="Try_these_on_your_own">
+            <header>Try these on your own</header>
+            <ul>
+                <li>Inserting a node at the end</li>
+                <li>Deleting a node at beginning</li>
+                <li>Deleting a node at end</li>
+                <li>Deleting a node at n<sup>th</sup> position</li>
+                <li>Reversing a Linked List</li>
+            </ul>
+        </section>
+
+        <section class="main-section" id="Reference">
+            <header>Reference</header>
+            <p><a href="https://www.youtube.com/watch?v=B31LgI4Y4DQ&t=15258s&pp=ygUqZGF0YSBzdHJ1Y3R1cmVzIGFuZCBhbGdvcml0aG1zIHVzaW5nIGMvYysr"target="_blank">Data Structures and Algorithms with C/C++</a></p>
+        </section>
+    </main>
+</body>
+</html>
